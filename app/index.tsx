@@ -11,7 +11,7 @@ export default function Index() {
       }}
     >
       <Text>Hello World.</Text>
-      <Button title="Next Page" onPress={()=>router.push('/dashboard')}/>
+      <Button title="Next Page" onPress={()=>router.push('/login')}/>
     </View>
   );
 }
