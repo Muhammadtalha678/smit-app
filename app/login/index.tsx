@@ -1,7 +1,6 @@
 import { View, Text, StyleSheet, ScrollView, TextInput, Image, Dimensions, TouchableOpacity } from 'react-native';
 import React from 'react';
-import { LinearGradient } from 'expo-linear-gradient';
-import { smitPrimary, smitSecondary } from '@/constants/Colors';
+import LinearGradient from '@/components/LinearGradient/LinearGradient'
 import Icon from '@expo/vector-icons/FontAwesome'
 import { StatusBar } from 'expo-status-bar';
 
@@ -12,13 +11,7 @@ const Dashboard = () => {
       <StatusBar style={'light'}/>
       {/* <View style ={{height:windowHeight}}> */}
         <View style={{minHeight: windowHeight * 0.46,alignItems:'center'}}>
-          <LinearGradient
-            colors={[smitSecondary, smitPrimary]}
-            style={styles.imageContainer}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 0 }}
-          >
-          </LinearGradient>
+          <LinearGradient style={styles.imageContainer}/>
             <Image
               source={require('../../assets/images/banner.png')}
               style={{
@@ -40,8 +33,7 @@ const Dashboard = () => {
               </View>
             </View>
              <TouchableOpacity style={{width:'100%'}} activeOpacity={0.8}>
-              <LinearGradient colors={[smitSecondary,smitPrimary]} 
-              style = {[styles.loginbutton,{height:windowHeight * 0.08}]}>
+              <LinearGradient style = {[styles.loginbutton,{height:windowHeight * 0.08}]}>
                   <Text style = {[styles.loginText,{fontSize:windowHeight*0.023}]}>Login</Text>
                   <Icon name='chevron-right' size={windowHeight* 0.02} color={'#fff'}/>
               </LinearGradient>

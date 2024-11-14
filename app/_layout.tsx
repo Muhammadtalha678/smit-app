@@ -1,12 +1,16 @@
-import { smitPrimary, smitSecondary } from "@/constants/Colors";
+
 import { Stack } from "expo-router";
-import {LinearGradient} from 'expo-linear-gradient'
+import LinearGradient from '@/components/LinearGradient/LinearGradient'
 import { useFonts } from 'expo-font'; 
 import * as SplashScreen from 'expo-splash-screen'; 
 import {useEffect} from 'react';
+import Icon from '@expo/vector-icons/FontAwesome'
+import { TouchableOpacity } from "react-native";
+import {useRouter} from 'expo-router'
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+  const router  = useRouter()
   const [loaded, error] = useFonts({
     'Poppins-Bold':require('../assets/fonts/Poppins-Bold.ttf'),
     'Poppins-Regular':require('../assets/fonts/Poppins-Regular.ttf'),
@@ -26,12 +30,14 @@ export default function RootLayout() {
       {/* <Stack.Screen name="index" /> */}
       <Stack.Screen name="login/index"  options={{
         headerBackground: () => {
-           return <LinearGradient colors={[smitSecondary,smitPrimary]} style={{flex:1}}
-            start={{x:0,y:0}} end={{x:1,y:0}}></LinearGradient>
+           return <LinearGradient style={{flex:1}}/>
         },
         headerTitle:"Student Login", headerTitleAlign:'center',
+        headerLeft:()=><TouchableOpacity activeOpacity={1} onPress={()=>router.back()}>
+          <Icon name="chevron-left" size={18} color={'#fff'}
+          style={{marginLeft:'3%'}}/></TouchableOpacity>,
         headerTitleStyle:{color:'#FFFFFF',fontFamily:'Poppins-Regular'},
-        headerBackButtonMenuEnabled:true
+        headerBackButtonMenuEnabled:true,
       }} />
     </Stack>
   );
